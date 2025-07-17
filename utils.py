@@ -1,8 +1,6 @@
 from neural_network import NeuralNetwork
 import plotly.graph_objects as go
 
-import plotly.graph_objects as go
-
 def draw_neural_network(neural_network: NeuralNetwork):
     config = neural_network.layers_config
     fig = go.Figure()
