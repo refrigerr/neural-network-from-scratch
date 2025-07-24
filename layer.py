@@ -8,3 +8,18 @@ class Layer:
     def feedforward(self, inputs):
         outputs = [neuron.feedforward(inputs) for neuron in self.neurons]
         return np.array(outputs)
+    
+    def backpropagate(self, output_gradients, learning_rate):
+
+        input_gradients = np.zeros(self.neurons[0].inputs.shape)
+
+        for i, neuron in enumerate(self.neurons):
+            
+            neuron_output_gradient = output_gradients[i]
+            
+            neuron_input_gradient = neuron.backpropagate(neuron_output_gradient, learning_rate)
+            
+            input_gradients += neuron_input_gradient
+
+        
+        return input_gradients
